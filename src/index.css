@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+}
+
+nav a {
+  font-size: 18px;
+}
+
+div.circle {
+  background-image: radial-gradient(circle, rgba(232, 220, 255, 1) 30%, rgba(242, 235, 255, 1) 60%, rgba(249, 248, 252, 1) 90%);
+}
+
+.bg-gradient {
+  background: linear-gradient(20deg, rgba(255, 233, 233, 0.9) 10%, rgba(242, 235, 255, 1) 30%, rgba(229, 238, 251, 0.9) 60%, rgba(249, 248, 252, 0.9) 100%);
+}
+
+.move,
+.book-card:hover,
+.btn-primary-white:hover,
+.btn-primary-dark:hover,
+.btn-viewList:hover {
+  transition: all 0.7s ease-in-out 0.3s;
+}
+
+.btn-viewList:hover .move,
+.btn-primary-dark:hover .move {
+  transform: translateX(8px);
+}
+
+.book-card:hover .move {
+  transform: scale(1.2);
+}
+
+.btn-viewList {
+  @apply btn bg-neutral-50 border-2 border-primaryColor h-full px-7 text-xl font-bold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
+}
+
+.btn-primary-white {
+  @apply btn bg-neutral-50 border-2 border-primaryColor px-7 text-lg font-semibold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
+}
+
+.btn-primary-dark {
+  @apply btn px-7 text-neutral-50 bg-primaryColor text-lg font-semibold hover:shadow-2xl hover:bg-primaryColor h-full;
+}
+
+.li-tags {
+  @apply text-tagsText bg-tagsBgColor px-4 py-2 rounded-full list-none cursor-pointer font-medium border border-tagsText;
+}
+
+.banner-img {
+  @apply shadow-lg rounded object-contain;
+}
