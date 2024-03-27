@@ -13,6 +13,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Root></Root>,
         errorElement: <ErrorPage></ErrorPage>,
+        
         children: [
             {
                 path: "/",
@@ -20,26 +21,29 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/lists",
-                loader: () => fetch('book.json'),
                 element: <ListedBooks></ListedBooks>,
+
                 children: [
                     {
                         index: true,
+                        loader: () => fetch('/book.json'),
                         element: <ReadBooks></ReadBooks>,
                     },
                     {
                         path: "wishlist",
+                        loader: () => fetch('/book.json'),
                         element: <WishlistBooks></WishlistBooks>,
                     }
                 ],
             },
             {
                 path: "/statistics",
+                loader: () => fetch('/book.json'),
                 element: <PagesRead></PagesRead>,
             },
             {
                 path: "/:bookId",
-                loader: () => fetch('book.json'),
+                loader: () => fetch('/book.json'),
                 element: <BookDetails></BookDetails>,
             },
         ],

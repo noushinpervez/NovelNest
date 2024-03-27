@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { saveReadBooks, saveWishlistBooks } from "../../Utility/localstorage";
+import { getStoredWishlistBooks, getStroredReadBooks, saveReadBooks, saveWishlistBooks } from "../../Utility/localstorage";
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -10,47 +10,55 @@ const BookDetails = () => {
 
     const book = books.find(book => book.bookId === parseInt(bookId));
 
-    const [readBook, setReadBook] = useState([]);
-    const [wishlistBook, setWishlistBook] = useState([]);
+    const isBookInReadList = bookId => {
+        const storedReadBooks = getStroredReadBooks();
+        return storedReadBooks.includes(bookId);
+    };
+
+    const isBookInWishlist = bookId => {
+        const storedWishlistBooks = getStoredWishlistBooks();
+        return storedWishlistBooks.includes(bookId);
+    };
+
+    const [readBook, setReadBook] = useState(getStroredReadBooks());
+    const [wishlistBook, setWishlistBook] = useState(getStoredWishlistBooks());
 
     const handleRead = book => {
-        let addReadBook = [...readBook];
+        const bookId = parseInt(book.bookId);
 
-        if (!readBook.includes(book)) {
-            addReadBook = [...readBook, book];
-            setReadBook(addReadBook);
-            saveReadBooks(parseInt(bookId));
-            toast.success("Book added to Read list successfully");
+        if (!isBookInReadList(bookId)) {
+            setReadBook(prevState => [...prevState, book]);
+            saveReadBooks(bookId);
+            toast.success('Book successfully added to your Read list!');
         }
         else {
-            toast.error("This book is already in your Read list");
+            toast.error('Book already read!');
         }
     }
 
     const handleWishlist = book => {
-        let addWishlistBook = [...wishlistBook];
+        const bookId = parseInt(book.bookId);
 
-        if (!readBook.includes(book) && !wishlistBook.includes(book)) {
-            addWishlistBook = [...wishlistBook, book];
-            setWishlistBook(addWishlistBook);
-            saveWishlistBooks(parseInt(bookId));
-            toast.success("Book added to Wishlist successfully");
+        if (!isBookInReadList(bookId) && !isBookInWishlist(bookId)) {
+            setWishlistBook(prevState => [...prevState, book]);
+            saveWishlistBooks(bookId);
+            toast.success('Book successfully added to your Wishlist!');
         }
         else {
-            toast.error(`This book is already in your ${readBook.includes(book) ? 'Read list' : 'Wishlist'}.`);
+            toast.error(`${isBookInReadList(bookId) ? 'Book already read!' : 'Already in your reading wishlist!'}`);
         }
     }
 
     return (
-        <div className="flex flex-row gap-12 text-textColor/80 font-medium text-base mt-12 mb-40">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 text-textColor/80 font-medium text-base mt-6 lg:mt-12 mb-16 lg:mb-40">
             <div className="bg-gradient rounded-2xl flex items-center justify-center p-20 flex-1">
-                <img className="object-contain h-0 min-h-full w-full" src={ book.image } alt="" />
+                <img className="object-contain lg:h-0 min-h-full w-full" src={ book.image } alt="" />
             </div>
             <div className="h-fit flex-1">
-                <h3 className="font-bold text-4xl text-textColor mb-4 text-justify">{ book.bookName }</h3>
-                <p className="text-xl mb-6">by { book.author } (Author)</p>
+                <h3 className="font-bold text-2xl lg:text-4xl text-textColor mb-4 text-justify">{ book.bookName }</h3>
+                <p className="text-lg lg:text-xl mb-6">by { book.author } (Author)</p>
                 <div className="border border-textColor/15"></div>
-                <p className="text-xl my-4">{ book.category }</p>
+                <p className="text-lg lg:text-xl my-4">{ book.category }</p>
                 <div className="border border-textColor/15 mb-6"></div>
                 <div className="overflow-x-auto">
                     <table className="table-auto">
@@ -62,7 +70,7 @@ const BookDetails = () => {
                                         {
                                             book.review.split('\n').map((reviewParagraph, idx, paragraphs) => (
                                                 <>
-                                                    <p key={ `${bookId}-${idx}` }>{ reviewParagraph }</p>
+                                                    <p key={ `bookreview${book.bookId}-${idx}` }>{ reviewParagraph }</p>
                                                     { idx !== paragraphs.length - 1 && <br /> }
                                                 </>))
                                         }
@@ -73,7 +81,7 @@ const BookDetails = () => {
                                 <td className="py-3">
                                     <div className="flex gap-3">
                                         {
-                                            book.tags.slice(0, 5).map((tag, idx) => (<li key={ `${bookId}-${idx}` } className="li-tags">{ tag }</li>))
+                                            book.tags.slice(0, 5).map((tag, idx) => (<li key={ `booklist${book.bookId}-${idx}` } className="li-tags">{ tag }</li>))
                                         }
                                     </div>
                                 </td>

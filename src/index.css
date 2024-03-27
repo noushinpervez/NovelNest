@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-delay-3000 {
+    animation-delay: 4s;
+  }
+
+  .animation-delay-6000 {
+    animation-delay: 8s;
+  }
+
+  .animation-delay-9000 {
+    animation-delay: 12s;
+  }
+}
+
 body {
   font-family: "Work Sans", sans-serif;
 }
@@ -42,21 +56,25 @@ div.circle {
 }
 
 .btn-viewList {
-  @apply btn bg-neutral-50 border-2 border-primaryColor h-full px-7 text-xl font-bold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
+  @apply btn bg-neutral-50 border-2 border-primaryColor h-full px-7 text-base lg:text-xl font-bold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
 }
 
 .btn-primary-white {
-  @apply btn bg-neutral-50 border-2 border-primaryColor px-7 text-lg font-semibold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
+  @apply btn bg-neutral-50 border-2 border-primaryColor px-7 text-base lg:text-lg font-semibold hover:bg-neutral-50 hover:border-2 hover:border-primaryColor hover:shadow-xl text-textColor;
 }
 
 .btn-primary-dark {
-  @apply btn px-7 text-neutral-50 bg-primaryColor text-lg font-semibold hover:shadow-2xl hover:bg-primaryColor h-full;
+  @apply btn px-7 text-neutral-50 bg-primaryColor text-base lg:text-lg font-semibold hover:shadow-2xl hover:bg-primaryColor h-full;
 }
 
 .li-tags {
-  @apply text-tagsText bg-tagsBgColor px-4 py-2 rounded-full list-none cursor-pointer font-medium border border-tagsText;
+  @apply text-tagsText bg-tagsBgColor px-4 py-1 lg:py-2 rounded-full list-none cursor-pointer font-medium border border-tagsText;
 }
 
 .banner-img {
   @apply shadow-lg rounded object-contain;
+}
+
+.tabs {
+  @apply flex;
 }

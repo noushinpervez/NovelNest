@@ -6,7 +6,7 @@ const Book = ({ book }) => {
     const { image, tags, bookId, bookName, author, category, rating } = book;
 
     return (
-        <Link to={ `/${bookId}` } style={ { display: 'contents' } }>
+        <Link to={ `/${bookId}` } className="contents">
             <div className="flex flex-col border border-textColor/15 rounded-2xl p-6 text-textColor/80 font-medium text-base gap-4 hover:bg-hover hover:shadow-xl book-card">
                 <div className="h-60 bg-gradient rounded-2xl flex items-center justify-center p-8">
                     <img className="object-contain h-full w-full move" src={ image } alt="" />
@@ -16,14 +16,14 @@ const Book = ({ book }) => {
                         tags.slice(0, 3).map((tag, idx) => (<li key={ `${bookId}-${idx}` } className="li-tags">{ tag }</li>))
                     }
                 </div>
-                <h3 className="font-bold text-2xl text-textColor flex-grow">{ bookName }</h3>
+                <h3 className="font-bold text-xl lg:text-2xl text-textColor flex-grow">{ bookName }</h3>
                 <p>by { author } (Author)</p>
                 <div className="border border-dashed border-textColor/15 my-1"></div>
                 <div className="flex justify-between">
                     <p>{ category }</p>
                     <div className="flex items-center gap-2">
                         <p>{ rating }</p>
-                        <CiStar></CiStar>
+                        <CiStar />
                     </div>
                 </div>
             </div>

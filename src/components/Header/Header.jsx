@@ -28,15 +28,15 @@ const Header = () => {
         <nav className="navbar mt-3 lg:mt-12">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={ 0 } role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    <div tabIndex={ 0 } role="button" className="pl-0 btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
-                    <ul tabIndex={ 0 } className="menu menu-sm dropdown-content z-[1] rounded-box min-w-max bg-primaryColor text-neutral-50">
+                    <ul tabIndex={ 0 } className="menu menu-md dropdown-content z-10 rounded-box min-w-max bg-primaryColor text-neutral-50">
                         { links }
                     </ul>
                 </div>
                 <div className="flex">
-                    <Link to="/" className="btn btn-ghost p-0 text-xl lg:text-3xl font-bold hover:bg-transparent"><img src="/images/owl.png" className="h-5 w-5 lg:h-8 lg:w-8"></img>MyBookList</Link>
+                    <Link to="/" className="btn btn-ghost p-0 text-2xl lg:text-3xl font-bold hover:bg-transparent"><img src="/images/owl.png" className="h-8 w-8"></img>NovelNest</Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
