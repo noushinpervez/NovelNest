@@ -7,6 +7,7 @@ import PagesRead from "../components/PagesRead/PagesRead";
 import BookDetails from "../components/BookDetails/BookDetails";
 import ReadBooks from "../components/ListedBooks/ReadBooks";
 import WishlistBooks from "../components/ListedBooks/WishlistBooks";
+import AuthorSpotlight from "../components/AuthorSpotlight/AuthorSpotlight";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ export const router = createBrowserRouter([
                 path: "/statistics",
                 loader: () => fetch('/book.json'),
                 element: <PagesRead></PagesRead>,
+            },
+            {
+                path: "/author-spotlight",
+                loader: () => fetch('/book.json'),
+                element: <AuthorSpotlight></AuthorSpotlight>,
             },
             {
                 path: "/:bookId",

@@ -47,10 +47,10 @@ const ListedBooks = () => {
 
     return (
         <div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-center my-6 h-24 bg-gradient flex items-center justify-center rounded-2xl">{ tabIndex === 0 ? "Read Books" : "Wishlist Books" }</h3>
-            <div className="dropdown dropdown-bottom flex justify-center mb-14 mt-8">
+            <h3 className="text-2xl lg:text-3xl font-bold text-center my-6 lg:my-8 h-24 bg-gradient flex items-center justify-center rounded-2xl">{ tabIndex === 0 ? "Read Books" : "Wishlist Books" }</h3>
+            <div className="dropdown dropdown-bottom flex justify-center mb-10 lg:mb-14">
                 <div tabIndex={ 0 } role="button" className="btn-primary-white">Sort by<IoIosArrowDown className="h-5 w-5" /></div>
-                <ul tabIndex={ 0 } className="dropdown-content z-[1] menu shadow bg-primaryColor text-neutral-50 rounded-box text-base">
+                <ul tabIndex={ 0 } className="dropdown-content z-[10] menu shadow bg-primaryColor text-neutral-50 rounded-box text-base">
                     <li><a onClick={ () => handleBooksFilter('rating') } className="w-full flex justify-center">Rating</a></li>
                     <li><a onClick={ () => handleBooksFilter('number-of-pages') } className="w-full flex justify-center">Number of pages</a></li>
                     <li><a onClick={ () => handleBooksFilter('publishing-year') } className="w-full flex justify-center">Publish year</a></li>

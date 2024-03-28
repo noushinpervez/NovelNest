@@ -21,6 +21,9 @@ const Header = () => {
             <li><NavLink to="/statistics" style={ ({ isActive }) => {
                 return isActive ? activeLinkStyle : {};
             } }>Pages Read</NavLink></li>
+            <li><NavLink to="/author-spotlight" style={ ({ isActive }) => {
+                return isActive ? activeLinkStyle : {};
+            } }>Author Spotlight</NavLink></li>
         </>
     );
 

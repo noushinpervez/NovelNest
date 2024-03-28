@@ -3,6 +3,8 @@ import { getStoredReadBooks } from '../../Utility/localstorage';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { IoIosArrowRoundForward } from 'react-icons/io';
+import { HashLink } from 'react-router-hash-link';
 
 const PagesRead = () => {
     const books = useLoaderData();
@@ -44,29 +46,35 @@ const PagesRead = () => {
     return (
         <div className="mt-6 lg:mt-9 bg-rating/5 rounded-3xl lg:p-24 mb-16 lg:mb-24">
             {
-                readList && readList.length > 0 && (
-                    <ResponsiveContainer width="100%" height={ 480 }>
-                        <BarChart
-                            data={ readList }
-                            margin={ {
-                                top: 40,
-                                right: 30,
-                                left: 10,
-                                bottom: 5,
-                            } }>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="bookName" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend width={ 130 } wrapperStyle={ { top: 50, right: 40, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' } } />
-                            <Bar dataKey="totalPages" fill="#8884d8" shape={ <TriangleBar /> } label={ { position: 'top' } }>
-                                { readList.map((entry, index) => (
-                                    <Cell key={ `cell-${index}` } fill={ colors[index % 20] } />
-                                )) }
-                            </Bar>
-                        </BarChart>
-                    </ResponsiveContainer>
-                )
+                readList && readList.length === 0 ? (
+                    <div className="flex flex-col items-center gap-8 h-fit p-6">
+                        <h3 className="font-bold text-xl lg:text-2xl text-center">No books added to your read list yet. Add books now!</h3>
+                        <HashLink scroll={ (el) => el.scrollIntoView({ behavior: 'smooth', block: 'start' }) } to="/#add-books" className="btn-primary-dark py-4">Add Books<IoIosArrowRoundForward className="w-6 h-6 move" /></HashLink>
+                    </div>
+                ) :
+                    (
+                        <ResponsiveContainer width="100%" height={ 480 }>
+                            <BarChart
+                                data={ readList }
+                                margin={ {
+                                    top: 40,
+                                    right: 30,
+                                    left: 10,
+                                    bottom: 5,
+                                } }>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="bookName" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend width={ 130 } wrapperStyle={ { top: 50, right: 40, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' } } />
+                                <Bar dataKey="totalPages" fill="#8884d8" shape={ <TriangleBar /> } label={ { position: 'top' } }>
+                                    { readList.map((entry, index) => (
+                                        <Cell key={ `cell-${index}` } fill={ colors[index % 20] } />
+                                    )) }
+                                </Bar>
+                            </BarChart>
+                        </ResponsiveContainer>
+                    )
             }
         </div>
     );
