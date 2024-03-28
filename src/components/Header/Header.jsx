@@ -24,6 +24,9 @@ const Header = () => {
             <li><NavLink to="/author-spotlight" style={ ({ isActive }) => {
                 return isActive ? activeLinkStyle : {};
             } }>Authors</NavLink></li>
+            <li><NavLink to="/about" style={ ({ isActive }) => {
+                return isActive ? activeLinkStyle : {};
+            } }>About Us</NavLink></li>
         </>
     );
 
