@@ -23,7 +23,7 @@ const Header = () => {
             } }>Pages Read</NavLink></li>
             <li><NavLink to="/author-spotlight" style={ ({ isActive }) => {
                 return isActive ? activeLinkStyle : {};
-            } }>Author Spotlight</NavLink></li>
+            } }>Authors</NavLink></li>
         </>
     );
 
