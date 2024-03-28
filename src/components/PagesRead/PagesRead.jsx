@@ -1,5 +1,5 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { getStroredReadBooks } from '../../Utility/localstorage';
+import { getStoredReadBooks } from '../../Utility/localstorage';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ const PagesRead = () => {
     const [readList, setReadList] = useState([]);
 
     useEffect(() => {
-        const storedBookIds = getStroredReadBooks();
+        const storedBookIds = getStoredReadBooks();
 
         if (books.length > 0) {
             const booksRead = [];

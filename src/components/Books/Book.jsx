@@ -13,7 +13,7 @@ const Book = ({ book }) => {
                 </div>
                 <div className="flex gap-3 mt-2">
                     {
-                        tags.slice(0, 3).map((tag, idx) => (<li key={ `${bookId}-${idx}` } className="li-tags">{ tag }</li>))
+                        tags.slice(0, 2).map((tag, idx) => (<li key={ `${bookId}-${idx}` } className="li-tags">{ tag }</li>))
                     }
                 </div>
                 <h3 className="font-bold text-xl lg:text-2xl text-textColor flex-grow">{ bookName }</h3>

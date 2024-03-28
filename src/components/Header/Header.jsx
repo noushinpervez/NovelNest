@@ -31,7 +31,7 @@ const Header = () => {
                     <div tabIndex={ 0 } role="button" className="pl-0 btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
-                    <ul tabIndex={ 0 } className="menu menu-md dropdown-content z-10 rounded-box min-w-max bg-primaryColor text-neutral-50">
+                    <ul tabIndex={ 0 } className="menu menu-md dropdown-content z-10 rounded-box min-w-max bg-primaryColor text-neutral-50 text-base">
                         { links }
                     </ul>
                 </div>

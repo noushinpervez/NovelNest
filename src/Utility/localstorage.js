@@ -1,4 +1,4 @@
-const getStroredReadBooks = () => {
+const getStoredReadBooks = () => {
     const storedReadBooks = localStorage.getItem('read-books');
 
     if (storedReadBooks) {
@@ -8,7 +8,7 @@ const getStroredReadBooks = () => {
 };
 
 const saveReadBooks = bookId => {
-    const storedReadBooks = getStroredReadBooks();
+    const storedReadBooks = getStoredReadBooks();
     const existsReadList = storedReadBooks.find(id => id === bookId);
 
     if (!existsReadList) {
@@ -27,7 +27,7 @@ const getStoredWishlistBooks = () => {
 };
 
 const saveWishlistBooks = bookId => {
-    const storedReadBooks = getStroredReadBooks();
+    const storedReadBooks = getStoredReadBooks();
     const existsReadList = storedReadBooks.find(id => id === bookId);
     
     const storedWishlistBooks = getStoredWishlistBooks();
@@ -39,4 +39,4 @@ const saveWishlistBooks = bookId => {
     }
 };
 
-export { saveReadBooks, getStroredReadBooks, saveWishlistBooks, getStoredWishlistBooks };
+export { saveReadBooks, getStoredReadBooks, saveWishlistBooks, getStoredWishlistBooks };

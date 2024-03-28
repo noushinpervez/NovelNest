@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getStoredWishlistBooks, getStroredReadBooks, saveReadBooks, saveWishlistBooks } from "../../Utility/localstorage";
+import { getStoredWishlistBooks, getStoredReadBooks, saveReadBooks, saveWishlistBooks } from "../../Utility/localstorage";
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -11,7 +11,7 @@ const BookDetails = () => {
     const book = books.find(book => book.bookId === parseInt(bookId));
 
     const isBookInReadList = bookId => {
-        const storedReadBooks = getStroredReadBooks();
+        const storedReadBooks = getStoredReadBooks();
         return storedReadBooks.includes(bookId);
     };
 
@@ -20,7 +20,7 @@ const BookDetails = () => {
         return storedWishlistBooks.includes(bookId);
     };
 
-    const [readBook, setReadBook] = useState(getStroredReadBooks());
+    const [readBook, setReadBook] = useState(getStoredReadBooks());
     const [wishlistBook, setWishlistBook] = useState(getStoredWishlistBooks());
 
     const handleRead = book => {
@@ -77,11 +77,11 @@ const BookDetails = () => {
                                     </div></td>
                             </tr>
                             <tr>
-                                <td className="text-textColor font-bold">Tags</td>
+                                <td className="text-textColor font-bold align-top lg:align-middle py-3">Tags</td>
                                 <td className="py-3">
-                                    <div className="flex gap-3">
+                                    <div className="flex flex-col lg:flex-row gap-3">
                                         {
-                                            book.tags.slice(0, 5).map((tag, idx) => (<li key={ `booklist${book.bookId}-${idx}` } className="li-tags">{ tag }</li>))
+                                            book.tags.slice(0, 5).map((tag, idx) => (<li key={ `tag-${book.bookId}-${idx}` } className="li-tags">#{ tag }</li>))
                                         }
                                     </div>
                                 </td>
