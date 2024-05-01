@@ -46,7 +46,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal gap-4">
+                <ul className="menu menu-horizontal">
                     { links }
                 </ul>
             </div>

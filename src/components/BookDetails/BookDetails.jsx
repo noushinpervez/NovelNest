@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,7 +34,7 @@ const BookDetails = () => {
         else {
             toast.error('Book already read!');
         }
-    }
+    };
 
     const handleWishlist = book => {
         const bookId = parseInt(book.bookId);
@@ -47,7 +47,11 @@ const BookDetails = () => {
         else {
             toast.error(`${isBookInReadList(bookId) ? 'Book already read!' : 'Already in your reading wishlist!'}`);
         }
-    }
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 text-textColor/80 font-medium text-base mt-6 lg:mt-12 mb-16 lg:mb-40">
